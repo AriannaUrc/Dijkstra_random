@@ -106,14 +106,22 @@ namespace Dijkstra_random
             int temp = arrivo;
             Console.Write(temp + " -> ");
 
-            while (pred[temp] != partenza)
+            while (pred[temp] != partenza && pred[temp] != -1)
             {
                 temp = pred[temp];
                 Console.Write(temp + " -> ");
                 
             }
 
-            Console.Write("0 ");
+            if(pred[temp] != -1)
+            {
+                Console.Write(partenza + " ");
+            }
+            else
+            {
+                Console.WriteLine("-1 ");
+            }
+            
         }
         
     
