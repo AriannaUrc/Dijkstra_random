@@ -18,7 +18,7 @@ namespace Dijkstra_random
             Random rnd = new Random();
             int nNodi = rnd.Next(1, 15);
 
-            int arrivo = rnd.Next(0, nNodi);
+            int arrivo = rnd.Next(1, nNodi);
 
             Console.WriteLine("nNodi: " + nNodi);
 
@@ -104,13 +104,16 @@ namespace Dijkstra_random
             Console.WriteLine("Partenza: " + partenza);
             Console.WriteLine("Arrivo: " + arrivo);
             int temp = arrivo;
+            Console.Write(temp + " -> ");
 
             while (pred[temp] != partenza)
             {
-                Console.Write(temp + " -> ");
                 temp = pred[temp];
+                Console.Write(temp + " -> ");
+                
             }
 
+            Console.Write("0 ");
         }
         
     
