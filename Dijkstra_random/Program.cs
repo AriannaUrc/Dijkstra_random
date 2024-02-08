@@ -16,7 +16,7 @@ namespace Dijkstra_random
 
 
             Random rnd = new Random();
-            int nNodi = rnd.Next(1, 15);
+            int nNodi = rnd.Next(2, 15);
 
             int arrivo = rnd.Next(1, nNodi);
 
