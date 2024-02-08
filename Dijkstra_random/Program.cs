@@ -54,7 +54,12 @@ namespace Dijkstra_random
             {
                 for (int j = 0; j < nNodi; j++)
                 {
+                    if(adiacenza[i, j]!= MAX)
                     Console.Write(adiacenza[i, j] + "\t");
+                    else
+                    {
+                        Console.Write("MAX" + "\t");
+                    }
                 }
                 Console.WriteLine();
             }
@@ -115,12 +120,14 @@ namespace Dijkstra_random
 
             if(pred[temp] != -1)
             {
-                Console.Write(partenza + " ");
+                Console.WriteLine(partenza + " ");
             }
             else
             {
                 Console.WriteLine("-1 ");
             }
+
+            Console.WriteLine("distanza: " + distanza[arrivo]+"\n");
             
         }
         
