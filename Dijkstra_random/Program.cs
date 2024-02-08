@@ -18,7 +18,7 @@ namespace Dijkstra_random
             Random rnd = new Random();
             int nNodi = rnd.Next(1, 15);
 
-            int Arrivo = rnd.Next(0, 14);
+            int arrivo = rnd.Next(0, nNodi);
 
             Console.WriteLine("nNodi: " + nNodi);
 
@@ -61,7 +61,7 @@ namespace Dijkstra_random
 
             int[] pred = new int[nNodi];
             int[] distanza = new int[nNodi];
-            distanza[0] = 0;//iniziamo da A
+            
 
             int[] stato = new int[nNodi]; //0 non visitato, 1 frontiera, -1 già visitato
 
@@ -76,29 +76,40 @@ namespace Dijkstra_random
                 stato[i] = 0;
             }
 
+            distanza[0] = 0;//iniziamo da A
+            stato[0] = -1;
 
             while (Q.Count != 0)
             {
                 for(int i = 0; i<nNodi; i++)
                 {
-                    if (adiacenza[Q.First(),i] != MAX)
+                    if (adiacenza[Q.Peek(),i] != MAX)
                     {
                         //quarda solo gli archi collegati
-                        if( ( adiacenza[Q.First(), i] + distanza[Q.First()] ) < distanza[i]) //se la somma del peso precedente e l'arco è minore della distanza del vertice aggiorna
+                        if( ( adiacenza[Q.Peek(), i] + distanza[Q.Peek()] ) < distanza[i] && stato[i]!=-1) //se la somma del peso precedente e l'arco è minore della distanza del vertice aggiorna
                         {
-                            pred[i] = Q.First();
-                            distanza[i] = adiacenza[Q.First(), i] + distanza[Q.First()];
+                            pred[i] = Q.Peek();
+                            distanza[i] = adiacenza[Q.Peek(), i] + distanza[Q.Peek()];
                             Q.Enqueue(i);
 
                         }
                     }
                 }
 
-                stato[Q.First()] = -1;
+                stato[Q.Peek()] = -1;
+                Q.Dequeue();
             }
 
-            Console.WriteLine("Partenza: " + "0");
-            Console.WriteLine("Arrivo: " + Arrivo);
+            int partenza = 0;
+            Console.WriteLine("Partenza: " + partenza);
+            Console.WriteLine("Arrivo: " + arrivo);
+            int temp = arrivo;
+
+            while (pred[temp] != partenza)
+            {
+                Console.Write(temp + " -> ");
+                temp = pred[temp];
+            }
 
         }
         
