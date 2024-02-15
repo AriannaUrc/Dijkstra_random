@@ -44,8 +44,6 @@ namespace Dijkstra_random
                             adiacenza[j, i] = MAX;
                         }
                     }
-
-
                 }
             }
 
@@ -70,9 +68,9 @@ namespace Dijkstra_random
 
             int[] stato = new int[nNodi]; //0 non visitato, 1 frontiera, -1 già visitato
 
-            Queue<int> Q = new Queue<int>();
+            PriorityQueue<int> Q = new PriorityQueue<int>();
 
-            Q.Enqueue(0);
+            Q.Enqueue(0, 0);
 
             for (int i = 0; i<nNodi; i++)
             {
@@ -130,7 +128,5 @@ namespace Dijkstra_random
             Console.WriteLine("distanza: " + distanza[arrivo]+"\n");
             
         }
-        
-    
     }
 }
