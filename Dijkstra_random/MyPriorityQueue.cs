@@ -67,5 +67,28 @@ namespace Dijkstra_random
         {
             return (Node)heap[0];
         }
+
+        bool IsEmpty()
+        {
+            return heap.Count == 0;
+        }
+
+        int research(string task)
+        {
+            int found = -1;
+            Node temp = (Node)heap[0];
+
+            for (int i = 0; i < heap.Count; i++)
+            {
+                temp = (Node)heap[0];
+                if (task == temp.task)
+                {
+                    found = i;
+                    break;
+                }
+            }
+
+            return found;
+        }
     };
 }
